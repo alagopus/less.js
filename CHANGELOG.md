@@ -1,5 +1,9 @@
 # 1.6.3
 
+2014-03-20 Klaus Rennecke
+
+ - Switch on sync imports, add option --async-import to disable it.
+
 2014-02-08
 
  - Fix issue with calling toCSS twice not working in some situations (like with bootstrap 2)

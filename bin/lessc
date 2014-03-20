@@ -19,6 +19,7 @@ var options = {
     lint: false,
     paths: [],
     color: true,
+    syncImport: true,
     strictImports: false,
     insecure: false,
     rootpath: '',
@@ -79,7 +80,7 @@ args = args.filter(function (arg) {
     switch (arg) {
         case 'v':
         case 'version':
-            console.log("lessc " + less.version.join('.') + " (LESS Compiler) [JavaScript]");
+            console.log("lessc " + less.version.join('.') + " (LESS Compiler -- SYNC) [JavaScript]");
             continueProcessing = false;
         case 'verbose':
             options.verbose = true;
@@ -91,6 +92,9 @@ args = args.filter(function (arg) {
         case 'l':
         case 'lint':
             options.lint = true;
+            break;
+        case 'async-import':
+            options.syncImport = false;
             break;
         case 'strict-imports':
             options.strictImports = true;
@@ -372,6 +376,7 @@ var parseLessFile = function (e, data) {
                     maxLineLen: options.maxLineLen,
                     strictMath: options.strictMath,
                     strictUnits: options.strictUnits,
+                    syncImport: options.syncImport,
                     urlArgs: options.urlArgs
                 });
                 if (output) {
